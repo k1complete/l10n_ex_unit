@@ -29,28 +29,28 @@ po file(Portable Object)に準拠しています。
 iex -S mixで実行してみます。
 
     |$ iex -S mix
-    |iex> h Code           
+    |iex(1)> h ExUnit.start
     
-                                          Code                                      
+                                def start(options \\ [])                            
     
-    Utilities for managing code compilation, code evaluation and code loading.
+    Starts ExUnit and automatically runs tests right before the VM terminates. It
+    accepts a set of options to configure ExUnit (the same ones accepted by
+    configure/1).
     
-    This module complements Erlang's code module
-    (http://www.erlang.org/doc/man/code.html) to add behaviour which is specific to
-    Elixir.
+    If you want to run tests manually, you can set :autorun to false.
     
-    |iex> import Exgettext.Helper
-    |iex> h Code           
+    |iex(2)> import Exgettext.Helper
+    nil
+    |iex(3)> h ExUnit.start         
     
-                                          Code                                      
+                                def start(options \\ [])                            
     
-    コードコンパイル、コード評価、コードローディングの管理のためのユーティ リティです。
-
-    このモジュールは Erlangのcodeモジュー ル (http://www.erlang.org/doc/man/code.html)
-    にElixir固有の振舞いを追加 して補足しました。
-
-    |iex>
-
+    ExUnitを開始し、自動的にテストを走らせ、直後にVMを終了します。 
+    ExUnitを構成するための、一組のオプションを受け入れます
+    (オプションはconfigure/1と同じです)。
+    
+    マニュルでテストを走らせたいなら、:autorunをfalseにセット してください。
+    
 .iex.exsフィアルに import Exgettext.Helperを入れておくことで、日本語の
 表示を優先できます。
 
@@ -88,6 +88,8 @@ ex_unitソース変更への追随
 
 ex_unit本体のソースが変更されたら、トークンの拾い出しを行います。
 これは、l10n_ex_unitのプロジェクトディレクトリで行います。
+--ex-unitというapp名を渡します(--ex_unitではないです。--ex-unit
+を渡すことで、内部的にex_unitに変換されます)。
 
     |$ mix l10n.xgettext --ex-unit path/to/ex_unit/source
     xgettext for l10n_ex_unit
@@ -115,5 +117,4 @@ poファイルとをマージします。
 
     |$ mix l10n.msgfmt ## または、
     |$ mix compile
-
 
