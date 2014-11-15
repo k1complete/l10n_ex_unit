@@ -152,7 +152,7 @@ msgstr ""
 #: lib/ex_unit/case_template.ex:1 
 msgid ""
 "This module allows a developer to define a test case\n"
-"template to be used throughout his tests. This is useful\n"
+"template to be used throughout their tests. This is useful\n"
 "when there are a set of functions that should be shared\n"
 "between tests or a set of setup callbacks.\n"
 "\n"
