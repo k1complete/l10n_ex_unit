@@ -27,7 +27,7 @@ defmodule L10nExUnit.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-     {:exgettext, git: "https://github.com/k1complete/exgettext.git"}
+     {:exgettext, github: "k1complete/exgettext"}
 #     {:exgettext, path: "../"}
     ]
   end
