@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: l 10n_ex_unit\n"
-"PO-Revision-Date: 2015-05-20 22:34+0900\n"
+"PO-Revision-Date: 2015-09-19 14:51+0900\n"
 "Last-Translator: 小田 照敬 <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -10,18 +10,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. TRANSLATORS: def ExUnit.configuration()
-#: lib/ex_unit.ex:201
-msgid "Returns ExUnit configuration.\n"
-msgstr "ExUnitコンフィグレーションを返します。\n"
-
 #. TRANSLATORS: @type state
-#: lib/ex_unit.ex:0
+#: lib/ex_unit.ex:60
 msgid "The state returned by ExUnit.Test and ExUnit.TestCase"
-msgstr ""
+msgstr "ExUnit.TestとExUnit.TestCaseにより返されるステートです"
 
 #. TRANSLATORS: def ExUnit.start(options \\ [])
-#: lib/ex_unit.ex:143
+#: lib/ex_unit.ex:144
 msgid ""
 "Starts ExUnit and automatically runs tests right before the\n"
 "VM terminates. It accepts a set of options to configure `ExUnit`\n"
@@ -36,8 +31,13 @@ msgstr ""
 "マニュルでテストを走らせたいなら、`:autorun`を`false`にセット\n"
 "してください。\n"
 
+#. TRANSLATORS: def ExUnit.configuration()
+#: lib/ex_unit.ex:218
+msgid "Returns ExUnit configuration.\n"
+msgstr "ExUnitコンフィグレーションを返します。\n"
+
 #. TRANSLATORS: def ExUnit.configure(options)
-#: lib/ex_unit.ex:192
+#: lib/ex_unit.ex:171
 msgid ""
 "Configures ExUnit.\n"
 "\n"
@@ -45,9 +45,18 @@ msgid ""
 "\n"
 "ExUnit supports the following options:\n"
 "\n"
+"  * `:assert_receive_timeout` - the timeout to be used on `assert_receive`\n"
+"    calls. Defaults to 100ms.\n"
+"\n"
+"  * `:capture_log` - if ExUnit should default to keeping track of log "
+"messages\n"
+"    and print them on test failure. Can be overriden for individual tests "
+"via\n"
+"    `@tag capture_log: false`. Defaults to `false`.\n"
+"\n"
 "  * `:colors` - a keyword list of colors to be used by some formatters.\n"
 "    The only option so far is `[enabled: boolean]` which defaults to `IO."
-"ANSI.enabled?/1`\n"
+"ANSI.enabled?/0`\n"
 "\n"
 "  * `:formatters` - the formatters that will print results;\n"
 "    defaults to `[ExUnit.CLIFormatter]`\n"
@@ -69,7 +78,12 @@ msgid ""
 "the\n"
 "    filter\n"
 "\n"
+"  * `:refute_receive_timeout` - the timeout to be used on `refute_receive`\n"
+"    calls. Defaults to 100ms.\n"
+"\n"
 "  * `:seed` - an integer seed value to randomize the test suite\n"
+"\n"
+"  * `:timeout` - set the timeout for the tests (default 60_000 ms)\n"
 msgstr ""
 "ExUnitを構成します。\n"
 "\n"
@@ -79,7 +93,7 @@ msgstr ""
 "\n"
 "  * `:colors` - いくつかのフォーマッタで使われる色のキーワード\n"
 "    リストです。今のところ唯一のオプションは、デフォルトで\n"
-"    `IO.ANSI.enabled?/1`になる、`[enabled: boolean]`です。\n"
+"    `IO.ANSI.enabled?/0`になる、`[enabled: boolean]`です。\n"
 "\n"
 "  * `:formatters` - 結果をプリントするフォーマッタで、デフォルトは\n"
 "    `[ExUnit.CLIFormatter]`です\n"
@@ -100,10 +114,15 @@ msgstr ""
 "  * `:exclude` - 指定したフィルタにマッチしたテストをスキップする\n"
 "    ようにします。\n"
 "\n"
+"  * `:refute_receive_timeout` - `refute_receive` を呼ぶときに使われる\n"
+"    タイムアウトです。デフォルトは100msです。\n"
+"\n"
 "  * `:seed` - テストスイートの乱数シードの整数を指定します\n"
+"\n"
+"  * `:timeout` - testの為のタイムアウトをセットします(デフォルト 60_000 ms)\n"
 
 #. TRANSLATORS: Elixir.ExUnit Summary
-#: lib/ex_unit.ex:1
+#: lib/ex_unit.ex:2
 msgid ""
 "Basic unit testing framework for Elixir.\n"
 "\n"
@@ -128,11 +147,11 @@ msgid ""
 "      end\n"
 "    end\n"
 "\n"
-"To run the tests above, run the file\n"
-"using `elixir` from the command line. Assuming you named the file\n"
-"`assertion_test.exs`, you can run it as:\n"
+"To run the tests above, run the file using `elixir` from the\n"
+"command line. Assuming you named the file `assertion_test.exs`,\n"
+"you can run it as:\n"
 "\n"
-"    bin/elixir assertion_test.exs\n"
+"    elixir assertion_test.exs\n"
 "\n"
 "## Case, Callbacks and Assertions\n"
 "\n"
@@ -189,7 +208,7 @@ msgstr ""
 "ファイルを走らせます。ファイルに`assertion_test.exs`と名付\n"
 "けたとすると、以下のように走らせることができます:\n"
 "\n"
-"    bin/elixir assertion_test.exs\n"
+"    elixir assertion_test.exs\n"
 "\n"
 "## Case, Callbacks and Assertions\n"
 "\n"
@@ -221,7 +240,7 @@ msgstr ""
 "詳細は`Mix.Tasks.Test`を参照してください。\n"
 
 #. TRANSLATORS: def ExUnit.run()
-#: lib/ex_unit.ex:212
+#: lib/ex_unit.ex:225
 msgid ""
 "API used to run the tests. It is invoked automatically\n"
 "if ExUnit is started via `ExUnit.start/1`.\n"
@@ -236,7 +255,7 @@ msgstr ""
 "含むマップを返します。\n"
 
 #. TRANSLATORS: Elixir.ExUnit.Test Summary
-#: lib/ex_unit.ex:64
+#: lib/ex_unit.ex:65
 msgid ""
 "A struct that keeps information about the test.\n"
 "\n"
@@ -247,6 +266,7 @@ msgid ""
 "  * `:state` - the test state (see ExUnit.state)\n"
 "  * `:time`  - the time to run the test\n"
 "  * `:tags`  - the test tags\n"
+"  * `:logs`  - the captured logs\n"
 "\n"
 msgstr ""
 "テストについての情報を保持する構造体です。\n"
@@ -258,10 +278,11 @@ msgstr ""
 "  * `:state` - テストステート (see ExUnit.state)\n"
 "  * `:time`  - テスト実行時刻\n"
 "  * `:tags`  - テストのタグ\n"
+"  * `:logs`  - キャプチャされたログ\n"
 "\n"
 
 #. TRANSLATORS: Elixir.ExUnit.TestCase Summary
-#: lib/ex_unit.ex:91
+#: lib/ex_unit.ex:90
 msgid ""
 "A struct that keeps information about the test case.\n"
 "\n"

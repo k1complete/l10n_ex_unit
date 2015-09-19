@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: l 10n_ex_unit\n"
-"PO-Revision-Date: 2015-05-20 22:34+0900\n"
+"PO-Revision-Date: 2015-09-19 15:54+0900\n"
 "Last-Translator: 小田 照敬 <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -10,22 +10,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. TRANSLATORS: defmacro ExUnit.Callbacks.setup(var \\ {:_, [], ExUnit.Callbacks}, block)
-#: lib/ex_unit/callbacks.ex:108
+#. TRANSLATORS: defmacro ExUnit.Callbacks.setup(var \\ quote() do;  _;end, block)
+#: lib/ex_unit/callbacks.ex:105
 msgid "Defines a callback to be run before each test in a case.\n"
 msgstr ""
 "ケースでそれぞれのテストの前に走らせるべきコールバックを\n"
 "定義します。\n"
 
-#. TRANSLATORS: defmacro ExUnit.Callbacks.setup_all(var \\ {:_, [], ExUnit.Callbacks}, block)
-#: lib/ex_unit/callbacks.ex:119
+#. TRANSLATORS: defmacro ExUnit.Callbacks.setup_all(var \\ quote() do;  _;end, block)
+#: lib/ex_unit/callbacks.ex:116
 msgid "Defines a callback to be run before all tests in a case.\n"
 msgstr ""
 "ケースで全てのテストの前に走らせるべきコールバックを\n"
 "定義します。\n"
 
-#. TRANSLATORS: def ExUnit.Callbacks.on_exit(ref \\ :erlang.make_ref(), callback)
-#: lib/ex_unit/callbacks.ex:139
+#. TRANSLATORS: def ExUnit.Callbacks.on_exit(ref \\ make_ref, callback)
+#: lib/ex_unit/callbacks.ex:127
 msgid ""
 "Defines a callback that runs on the test (or test case) exit.\n"
 "\n"
@@ -51,7 +51,7 @@ msgstr ""
 "ことを保証するために使われます。\n"
 
 #. TRANSLATORS: Elixir.ExUnit.Callbacks Summary
-#: lib/ex_unit/callbacks.ex:1
+#: lib/ex_unit/callbacks.ex:2
 msgid ""
 "Defines ExUnit Callbacks.\n"
 "\n"
@@ -63,9 +63,10 @@ msgid ""
 "callback may optionally put extra data into `context` to be used in\n"
 "the tests.\n"
 "\n"
-"The `setup_all` callbacks are invoked once before the first test's `setup`\n"
-"and all `setup` callbacks are run before each test. No callback runs if the\n"
-"test case has no tests or all tests were filtered out.\n"
+"The `setup_all` callbacks are invoked once to setup the test case before "
+"any\n"
+"test is run and all `setup` callbacks are run before each test. No callback\n"
+"runs if the test case has no tests or all tests were filtered out.\n"
 "\n"
 "`on_exit` callbacks are registered on demand, usually to undo an action\n"
 "performed by a setup callback. `on_exit` may also take a reference,\n"
@@ -100,7 +101,7 @@ msgid ""
 "    defmodule AssertionTest do\n"
 "      use ExUnit.Case, async: true\n"
 "\n"
-"      # `setup_all` is called once before every test\n"
+"      # `setup_all` is called once to setup the case before any test is run\n"
 "      setup_all do\n"
 "        IO.puts \"Starting AssertionTest\"\n"
 "\n"
@@ -139,8 +140,8 @@ msgid ""
 msgstr ""
 "ExUnitコールバックを定義します。\n"
 "\n"
-"このモジュールは`setup_all`と`setup`コールバックの両方を定義します\n"
-"(`on_exit`機能だけでなく)。\n"
+"このモジュールは、`setup_all`と`setup`コールバックの両方、\n"
+"そして`on_exit`機能を定義します。\n"
 "\n"
 "setupコールバックはマクロとして定義され、それぞれは、\n"
 "通常`context`として参照される、\n"
@@ -191,12 +192,12 @@ msgstr ""
 "失敗にし、`setup`からの悪い応答は、現在のテストを失敗を\n"
 "もたらします。\n"
 "\n"
-"## 例\n"
+"## Examples\n"
 "\n"
 "    defmodule AssertionTest do\n"
 "      use ExUnit.Case, async: true\n"
 "\n"
-"      # `setup_all` is called once before every test\n"
+"      # `setup_all` is called once to setup the case before any test is run\n"
 "      setup_all do\n"
 "        IO.puts \"Starting AssertionTest\"\n"
 "\n"

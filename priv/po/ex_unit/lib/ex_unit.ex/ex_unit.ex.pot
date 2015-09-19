@@ -1,15 +1,10 @@
-#. TRANSLATORS: def ExUnit.configuration()
-#: lib/ex_unit.ex:201 
-msgid ""
-"Returns ExUnit configuration.\n"
-msgstr ""
 #. TRANSLATORS: @type state
-#: lib/ex_unit.ex:0 
+#: lib/ex_unit.ex:60 
 msgid ""
 "The state returned by ExUnit.Test and ExUnit.TestCase"
 msgstr ""
 #. TRANSLATORS: def ExUnit.start(options \\ [])
-#: lib/ex_unit.ex:143 
+#: lib/ex_unit.ex:144 
 msgid ""
 "Starts ExUnit and automatically runs tests right before the\n"
 "VM terminates. It accepts a set of options to configure `ExUnit`\n"
@@ -17,8 +12,13 @@ msgid ""
 "\n"
 "If you want to run tests manually, you can set `:autorun` to `false`.\n"
 msgstr ""
+#. TRANSLATORS: def ExUnit.configuration()
+#: lib/ex_unit.ex:218 
+msgid ""
+"Returns ExUnit configuration.\n"
+msgstr ""
 #. TRANSLATORS: def ExUnit.configure(options)
-#: lib/ex_unit.ex:192 
+#: lib/ex_unit.ex:171 
 msgid ""
 "Configures ExUnit.\n"
 "\n"
@@ -26,8 +26,15 @@ msgid ""
 "\n"
 "ExUnit supports the following options:\n"
 "\n"
+"  * `:assert_receive_timeout` - the timeout to be used on `assert_receive`\n"
+"    calls. Defaults to 100ms.\n"
+"\n"
+"  * `:capture_log` - if ExUnit should default to keeping track of log messages\n"
+"    and print them on test failure. Can be overriden for individual tests via\n"
+"    `@tag capture_log: false`. Defaults to `false`.\n"
+"\n"
 "  * `:colors` - a keyword list of colors to be used by some formatters.\n"
-"    The only option so far is `[enabled: boolean]` which defaults to `IO.ANSI.enabled?/1`\n"
+"    The only option so far is `[enabled: boolean]` which defaults to `IO.ANSI.enabled?/0`\n"
 "\n"
 "  * `:formatters` - the formatters that will print results;\n"
 "    defaults to `[ExUnit.CLIFormatter]`\n"
@@ -46,10 +53,15 @@ msgid ""
 "  * `:exclude` - specify which tests are run by skipping tests that match the\n"
 "    filter\n"
 "\n"
+"  * `:refute_receive_timeout` - the timeout to be used on `refute_receive`\n"
+"    calls. Defaults to 100ms.\n"
+"\n"
 "  * `:seed` - an integer seed value to randomize the test suite\n"
+"\n"
+"  * `:timeout` - set the timeout for the tests (default 60_000 ms)\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit Summary
-#: lib/ex_unit.ex:1 
+#: lib/ex_unit.ex:2 
 msgid ""
 "Basic unit testing framework for Elixir.\n"
 "\n"
@@ -74,11 +86,11 @@ msgid ""
 "      end\n"
 "    end\n"
 "\n"
-"To run the tests above, run the file\n"
-"using `elixir` from the command line. Assuming you named the file\n"
-"`assertion_test.exs`, you can run it as:\n"
+"To run the tests above, run the file using `elixir` from the\n"
+"command line. Assuming you named the file `assertion_test.exs`,\n"
+"you can run it as:\n"
 "\n"
-"    bin/elixir assertion_test.exs\n"
+"    elixir assertion_test.exs\n"
 "\n"
 "## Case, Callbacks and Assertions\n"
 "\n"
@@ -108,7 +120,7 @@ msgid ""
 "files. See `Mix.Tasks.Test` for more information.\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.run()
-#: lib/ex_unit.ex:212 
+#: lib/ex_unit.ex:225 
 msgid ""
 "API used to run the tests. It is invoked automatically\n"
 "if ExUnit is started via `ExUnit.start/1`.\n"
@@ -117,7 +129,7 @@ msgid ""
 "of failures and the number of skipped tests.\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.Test Summary
-#: lib/ex_unit.ex:64 
+#: lib/ex_unit.ex:65 
 msgid ""
 "A struct that keeps information about the test.\n"
 "\n"
@@ -128,10 +140,11 @@ msgid ""
 "  * `:state` - the test state (see ExUnit.state)\n"
 "  * `:time`  - the time to run the test\n"
 "  * `:tags`  - the test tags\n"
+"  * `:logs`  - the captured logs\n"
 "\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.TestCase Summary
-#: lib/ex_unit.ex:91 
+#: lib/ex_unit.ex:90 
 msgid ""
 "A struct that keeps information about the test case.\n"
 "\n"

@@ -1,5 +1,5 @@
 #. TRANSLATORS: Elixir.ExUnit.CaseTemplate Summary
-#: lib/ex_unit/case_template.ex:1 
+#: lib/ex_unit/case_template.ex:2 
 msgid ""
 "This module allows a developer to define a test case\n"
 "template to be used throughout their tests. This is useful\n"
@@ -28,9 +28,18 @@ msgid ""
 "    end\n"
 "\n"
 msgstr ""
-#. TRANSLATORS: defmacro ExUnit.CaseTemplate.using(var \\ {:_, [], ExUnit.CaseTemplate}, list2)
-#: lib/ex_unit/case_template.ex:66 
+#. TRANSLATORS: defmacro ExUnit.CaseTemplate.using(var \\ quote() do;  _;end, list)
+#: lib/ex_unit/case_template.ex:62 
 msgid ""
 "Allows a developer to customize the using block\n"
 "when the case template is used.\n"
+"\n"
+"## Example\n"
+"\n"
+"  using do\n"
+"    quote do\n"
+"      alias MyApp.FunModule\n"
+"    end\n"
+"  end\n"
+"  \n"
 msgstr ""

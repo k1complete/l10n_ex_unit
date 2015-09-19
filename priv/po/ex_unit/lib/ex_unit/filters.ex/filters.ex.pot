@@ -1,5 +1,25 @@
+#. TRANSLATORS: def ExUnit.Filters.parse(filters)
+#: lib/ex_unit/filters.ex:45 
+msgid ""
+"Parses the given filters, as one would receive from the command line.\n"
+"\n"
+"## Examples\n"
+"\n"
+"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true\"])\n"
+"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
+"\n"
+msgstr ""
+#. TRANSLATORS: def ExUnit.Filters.parse_path(file)
+#: lib/ex_unit/filters.ex:8 
+msgid ""
+"Parses filters out of a path.\n"
+"\n"
+"Determines whether a given file path (supplied to ExUnit/Mix as arguments\n"
+"on the command line) includes a line number filter, and if so returns the\n"
+"appropriate ExUnit configuration options.\n"
+msgstr ""
 #. TRANSLATORS: def ExUnit.Filters.normalize(include, exclude)
-#: lib/ex_unit/filters.ex:39 
+#: lib/ex_unit/filters.ex:25 
 msgid ""
 "Normalizes include and excludes to remove duplicates\n"
 "and keep precedence.\n"
@@ -14,7 +34,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Filters.eval(include, exclude, tags, collection)
-#: lib/ex_unit/filters.ex:84 
+#: lib/ex_unit/filters.ex:64 
 msgid ""
 "Evaluates the `include` and `exclude` filters against the given `tags`.\n"
 "\n"
@@ -31,31 +51,11 @@ msgid ""
 "    :ok\n"
 "\n"
 "    iex> ExUnit.Filters.eval([foo: \"bar\"], [:foo], %{foo: \"baz\"}, [])\n"
-"    {:error, :foo}\n"
+"    {:error, \"due to foo filter\"}\n"
 "\n"
-msgstr ""
-#. TRANSLATORS: def ExUnit.Filters.parse(filters)
-#: lib/ex_unit/filters.ex:55 
-msgid ""
-"Parses the given filters, as one would receive from the command line.\n"
-"\n"
-"## Examples\n"
-"\n"
-"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true\"])\n"
-"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
-"\n"
-msgstr ""
-#. TRANSLATORS: def ExUnit.Filters.parse_path(file)
-#: lib/ex_unit/filters.ex:16 
-msgid ""
-"Parses filters out of a path.\n"
-"\n"
-"Determines whether a given file path (supplied to ExUnit/Mix as arguments\n"
-"on the command line) includes a line number filter, and if so returns the\n"
-"appropriate ExUnit configuration options.\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.Filters Summary
-#: lib/ex_unit/filters.ex:1 
+#: lib/ex_unit/filters.ex:2 
 msgid ""
 "Conveniences for parsing and evaluating filters.\n"
 msgstr ""
