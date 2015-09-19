@@ -4,7 +4,7 @@ defmodule L10nExUnit.Mixfile do
   def project do
     [app: :l10n_ex_unit,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: "~> 1.1.0-beta",
      compilers: Mix.compilers ++ [:po],
      deps: deps]
   end
