@@ -1,18 +1,3 @@
-#. TRANSLATORS: def ExUnit.AssertionError.no_value()
-#: lib/ex_unit/assertions.ex:9 
-msgid ""
-"Indicates no meaningful value for a field.\n"
-msgstr ""
-#. TRANSLATORS: def ExUnit.Assertions.flunk(message \\ "Flunked!")
-#: lib/ex_unit/assertions.ex:558 
-msgid ""
-"Fails with a message.\n"
-"\n"
-"## Examples\n"
-"\n"
-"    flunk \"This should raise an error\"\n"
-"\n"
-msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.Assertions Summary
 #: lib/ex_unit/assertions.ex:18 
 msgid ""
@@ -20,7 +5,7 @@ msgid ""
 "imported by default into your test cases.\n"
 "\n"
 "In general, a developer will want to use the general\n"
-"`assert` macro in tests. This macro tries to be smart\n"
+"`assert` macro in tests. This macro introspects your code\n"
 "and provide good reporting whenever there is a failure.\n"
 "For example, `assert some_fun() == 10` will fail (assuming\n"
 "`some_fun()` returns 13):\n"
@@ -31,22 +16,27 @@ msgid ""
 "    rhs:  10\n"
 "\n"
 "This module also provides other convenience functions\n"
-"like `assert_in_delta` and `assert_raise` to easily handle other\n"
-"common cases such as checking a floating point number or handling exceptions.\n"
+"like `assert_in_delta` and `assert_raise` to easily handle\n"
+"other common cases such as checking a floating point number\n"
+"or handling exceptions.\n"
 msgstr ""
-#. TRANSLATORS: defmacro ExUnit.Assertions.refute(assertion)
-#: lib/ex_unit/assertions.ex:136 
+#. TRANSLATORS: def ExUnit.AssertionError.no_value()
+#: lib/ex_unit/assertions.ex:9 
 msgid ""
-"This is a negative assertion, failing if its parameter\n"
-"is truthy.\n"
+"Indicates no meaningful value for a field.\n"
+msgstr ""
+#. TRANSLATORS: def ExUnit.Assertions.flunk(message \\ "Flunked!")
+#: lib/ex_unit/assertions.ex:612 
+msgid ""
+"Fails with a message.\n"
 "\n"
 "## Examples\n"
 "\n"
-"    refute age < 0\n"
+"    flunk \"This should raise an error\"\n"
 "\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.assert_raise(exception, function)
-#: lib/ex_unit/assertions.ex:356 
+#: lib/ex_unit/assertions.ex:410 
 msgid ""
 "Asserts the `exception` is raised during `function` execution.\n"
 "Returns the rescued exception, fails otherwise.\n"
@@ -59,19 +49,24 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.assert_raise(exception, message, function)
-#: lib/ex_unit/assertions.ex:331 
+#: lib/ex_unit/assertions.ex:377 
 msgid ""
 "Asserts the `exception` is raised during `function` execution with\n"
-"the `expected_message`. Returns the rescued exception, fails otherwise.\n"
+"the expected `message`, which can be a `Regex` or an exact `String`.\n"
+"Returns the rescued exception, fails otherwise.\n"
 "\n"
 "## Examples\n"
 "\n"
 "    assert_raise ArithmeticError, \"bad argument in arithmetic expression\", fn ->\n"
 "      1 + \"test\"\n"
 "    end\n"
+"    \n"
+"    assert_raise RuntimeError, ~r/^Today's lucky number is 0.+!$/, fn ->\n"
+"      raise \"Today's lucky number is 0.4435846174457203!\"\n"
+"    end\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.assert_in_delta(value1, value2, delta, message \\ nil)
-#: lib/ex_unit/assertions.ex:388 
+#: lib/ex_unit/assertions.ex:442 
 msgid ""
 "Asserts that `value1` and `value2` differ by no more than `delta`.\n"
 "\n"
@@ -83,24 +78,13 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.assert(assertion)
-#: lib/ex_unit/assertions.ex:38 
+#: lib/ex_unit/assertions.ex:39 
 msgid ""
-"Asserts its argument is `true`.\n"
+"Asserts its argument is a truthy value.\n"
 "\n"
-"`assert` tries to be smart and provide good\n"
-"reporting whenever there is a failure. In particular, if\n"
-"given a match expression, it will report any failure in terms\n"
-"of that match. Given\n"
-"\n"
-"    assert [one] = [two]\n"
-"\n"
-"you'll see:\n"
-"\n"
-"    match (=) failed\n"
-"    code: [one] = [two]\n"
-"    rhs:  [2]\n"
-"\n"
-"If the expression is a comparison operator, the message\n"
+"`assert` instrospects the underlying expression and provide\n"
+"good  reporting whenever there is a failure. For example,\n"
+"if the expression uses the comparison operator, the message\n"
 "will show the values of the two sides. The assertion\n"
 "\n"
 "    assert 1+2+3+4 > 15\n"
@@ -111,9 +95,31 @@ msgid ""
 "    code: 1+2+3+4 > 15\n"
 "    lhs:  10\n"
 "    rhs:  15\n"
+"\n"
+"Similarly, if a match expression is given, it will report\n"
+"any failure in terms of that match. Given\n"
+"\n"
+"    assert [one] = [two]\n"
+"\n"
+"you'll see:\n"
+"\n"
+"    match (=) failed\n"
+"    code: [one] = [two]\n"
+"    rhs:  [2]\n"
+"\n"
+"Keep in mind that `assert` does not change its semantics\n"
+"based on the expression. In other words, the expression\n"
+"is still required to return a truthy value. For example,\n"
+"the following will fail:\n"
+"\n"
+"    assert nil = some_function_that_returns_nil()\n"
+"\n"
+"Even though the match works, `assert` still expects a truth\n"
+"value. In such cases, simply use `Kernel.==/2` or\n"
+"`Kernel.match?/2`.\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.assert_received(expected, message \\ nil)
-#: lib/ex_unit/assertions.ex:262 
+#: lib/ex_unit/assertions.ex:286 
 msgid ""
 "Asserts a message was received and is in the current process' mailbox.\n"
 "Timeout is set to 0, so there is no waiting time.\n"
@@ -132,7 +138,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.assert_receive(expected, timeout \\ Application.fetch_env!(:ex_unit, :assert_receive_timeout), message \\ nil)
-#: lib/ex_unit/assertions.ex:232 
+#: lib/ex_unit/assertions.ex:256 
 msgid ""
 "Asserts a message was or is going to be received.\n"
 "\n"
@@ -158,7 +164,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.refute_received(not_expected, message \\ nil)
-#: lib/ex_unit/assertions.ex:492 
+#: lib/ex_unit/assertions.ex:546 
 msgid ""
 "Asserts a message was not received (i.e. it is not in the current process mailbox).\n"
 "The `not_expected` argument must be a match pattern.\n"
@@ -172,7 +178,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.assert(value, message)
-#: lib/ex_unit/assertions.ex:215 
+#: lib/ex_unit/assertions.ex:239 
 msgid ""
 "Asserts `value` is `true`, displaying the given `message` otherwise.\n"
 "\n"
@@ -182,7 +188,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.refute(value, message)
-#: lib/ex_unit/assertions.ex:459 
+#: lib/ex_unit/assertions.ex:513 
 msgid ""
 "Asserts `value` is `nil` or `false` (that is, `value` is not truthy).\n"
 "\n"
@@ -192,7 +198,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.refute_in_delta(value1, value2, delta, message \\ nil)
-#: lib/ex_unit/assertions.ex:534 
+#: lib/ex_unit/assertions.ex:588 
 msgid ""
 "Asserts `value1` and `value2` are not within `delta`.\n"
 "\n"
@@ -206,7 +212,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.refute_receive(not_expected, timeout \\ Application.fetch_env!(:ex_unit, :refute_receive_timeout), message \\ nil)
-#: lib/ex_unit/assertions.ex:471 
+#: lib/ex_unit/assertions.ex:525 
 msgid ""
 "Asserts `message` was not received (and won't be received) within\n"
 "the `timeout` period.\n"
@@ -223,7 +229,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.catch_throw(expression)
-#: lib/ex_unit/assertions.ex:406 
+#: lib/ex_unit/assertions.ex:460 
 msgid ""
 "Asserts `expression` will throw a value.\n"
 "Returns the thrown value or fails otherwise.\n"
@@ -234,7 +240,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.catch_exit(expression)
-#: lib/ex_unit/assertions.ex:419 
+#: lib/ex_unit/assertions.ex:473 
 msgid ""
 "Asserts `expression` will exit.\n"
 "Returns the exit status/message or fails otherwise.\n"
@@ -245,7 +251,7 @@ msgid ""
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.catch_error(expression)
-#: lib/ex_unit/assertions.ex:432 
+#: lib/ex_unit/assertions.ex:486 
 msgid ""
 "Asserts `expression` will cause an error.\n"
 "Returns the error or fails otherwise.\n"
@@ -253,5 +259,28 @@ msgid ""
 "## Examples\n"
 "\n"
 "    assert catch_error(error 1) == 1\n"
+"\n"
+msgstr ""
+#. TRANSLATORS: defmacro ExUnit.Assertions.refute(assertion)
+#: lib/ex_unit/assertions.ex:148 
+msgid ""
+"A negative assertion, expects the expression to be `false` or `nil`.\n"
+"\n"
+"Keep in mind that `refute` does not change the semantics of\n"
+"the given expression. In other words, the following will fail:\n"
+"\n"
+"    refute {:ok, _} = some_function_that_returns_error_tuple()\n"
+"\n"
+"The code above will fail because the `=` operator always fails\n"
+"when the sides do not match and `refute/2` does not change it.\n"
+"\n"
+"The correct way to write the refutation above is to use\n"
+"`Kernel.match?/2`:\n"
+"\n"
+"    refute match? {:ok, _}, some_function_that_returns_error_tuple()\n"
+"\n"
+"## Examples\n"
+"\n"
+"    refute age < 0\n"
 "\n"
 msgstr ""
