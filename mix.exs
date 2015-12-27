@@ -56,6 +56,7 @@ defmodule L10nExUnit.Mixfile do
      logo_url: "http://elixir-lang.org/docs/logo.png",
      source_beam: sr,
      source_ref: sref,
+     output: "doc/ex_unit",
      main: "ExUnit"
     ]
   end
