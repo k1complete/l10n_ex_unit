@@ -1,3 +1,8 @@
+#. TRANSLATORS: def ExUnit.Formatter.format_test_failure(test, failures, counter, width, formatter)
+#: lib/ex_unit/formatter.ex:105 
+msgid ""
+"Receives a test and formats its failure.\n"
+msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.Formatter Summary
 #: lib/ex_unit/formatter.ex:2 
 msgid ""
@@ -29,15 +34,10 @@ msgid ""
 "    a test case has finished. See `ExUnit.Test` for details.\n"
 "\n"
 msgstr ""
-#. TRANSLATORS: def ExUnit.Formatter.format_test_case_failure(test_case, failure, counter, width, formatter)
-#: lib/ex_unit/formatter.ex:117 
+#. TRANSLATORS: def ExUnit.Formatter.format_test_case_failure(test_case, failures, counter, width, formatter)
+#: lib/ex_unit/formatter.ex:138 
 msgid ""
 "Receives a test case and formats its failure.\n"
-msgstr ""
-#. TRANSLATORS: def ExUnit.Formatter.format_test_failure(test, failure, counter, width, formatter)
-#: lib/ex_unit/formatter.ex:105 
-msgid ""
-"Receives a test and formats its failure.\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.Formatter.format_time(run_us, load_us)
 #: lib/ex_unit/formatter.ex:44 

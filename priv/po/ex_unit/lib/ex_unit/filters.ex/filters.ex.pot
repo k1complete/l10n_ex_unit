@@ -1,14 +1,3 @@
-#. TRANSLATORS: def ExUnit.Filters.parse(filters)
-#: lib/ex_unit/filters.ex:45 
-msgid ""
-"Parses the given filters, as one would receive from the command line.\n"
-"\n"
-"## Examples\n"
-"\n"
-"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true\"])\n"
-"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
-"\n"
-msgstr ""
 #. TRANSLATORS: def ExUnit.Filters.parse_path(file)
 #: lib/ex_unit/filters.ex:8 
 msgid ""
@@ -52,6 +41,17 @@ msgid ""
 "\n"
 "    iex> ExUnit.Filters.eval([foo: \"bar\"], [:foo], %{foo: \"baz\"}, [])\n"
 "    {:error, \"due to foo filter\"}\n"
+"\n"
+msgstr ""
+#. TRANSLATORS: def ExUnit.Filters.parse(filters)
+#: lib/ex_unit/filters.ex:45 
+msgid ""
+"Parses the given filters, as one would receive from the command line.\n"
+"\n"
+"## Examples\n"
+"\n"
+"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true\"])\n"
+"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
 "\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.Filters Summary

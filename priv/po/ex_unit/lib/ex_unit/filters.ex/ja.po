@@ -10,27 +10,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. TRANSLATORS: def ExUnit.Filters.parse(filters)
-#: lib/ex_unit/filters.ex:45
-msgid ""
-"Parses the given filters, as one would receive from the command line.\n"
-"\n"
-"## Examples\n"
-"\n"
-"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true"
-"\"])\n"
-"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
-"\n"
-msgstr ""
-"コマンドラインから受け取ったフィルタをパースします。\n"
-"\n"
-"## 例\n"
-"\n"
-"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true"
-"\"])\n"
-"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
-"\n"
-
 #. TRANSLATORS: def ExUnit.Filters.parse_path(file)
 #: lib/ex_unit/filters.ex:8
 msgid ""
@@ -111,6 +90,27 @@ msgstr ""
 "\n"
 "    iex> ExUnit.Filters.eval([foo: \"bar\"], [:foo], %{foo: \"baz\"}, [])\n"
 "    {:error, \"due to foo filter\"}\n"
+"\n"
+
+#. TRANSLATORS: def ExUnit.Filters.parse(filters)
+#: lib/ex_unit/filters.ex:45
+msgid ""
+"Parses the given filters, as one would receive from the command line.\n"
+"\n"
+"## Examples\n"
+"\n"
+"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true"
+"\"])\n"
+"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
+"\n"
+msgstr ""
+"コマンドラインから受け取ったフィルタをパースします。\n"
+"\n"
+"## 例\n"
+"\n"
+"    iex> ExUnit.Filters.parse([\"foo:bar\", \"baz\", \"line:9\", \"bool:true"
+"\"])\n"
+"    [{:foo, \"bar\"}, :baz, {:line, \"9\"}, {:bool, \"true\"}]\n"
 "\n"
 
 #. TRANSLATORS: Elixir.ExUnit.Filters Summary
