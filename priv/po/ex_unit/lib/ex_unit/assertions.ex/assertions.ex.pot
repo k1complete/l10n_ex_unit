@@ -113,6 +113,23 @@ msgid ""
 "    refute_receive :bye, 1000\n"
 "\n"
 msgstr ""
+#. TRANSLATORS: def ExUnit.Assertions.assert_raise(exception, message, function)
+#: lib/ex_unit/assertions.ex:424 
+msgid ""
+"Asserts the `exception` is raised during `function` execution with\n"
+"the expected `message`, which can be a `Regex` or an exact `String`.\n"
+"Returns the rescued exception, fails otherwise.\n"
+"\n"
+"## Examples\n"
+"\n"
+"    assert_raise ArithmeticError, \"bad argument in arithmetic expression\", fn ->\n"
+"      1 + \"test\"\n"
+"    end\n"
+"\n"
+"    assert_raise RuntimeError, ~r/^Today's lucky number is 0.+!$/, fn ->\n"
+"      raise \"Today's lucky number is 0.45808295320545356!\"\n"
+"    end\n"
+msgstr ""
 #. TRANSLATORS: def ExUnit.Assertions.assert_in_delta(value1, value2, delta, message \\ nil)
 #: lib/ex_unit/assertions.ex:489 
 msgid ""
@@ -172,23 +189,6 @@ msgid ""
 "    refute_in_delta 10, 11, 2\n"
 "\n"
 msgstr ""
-#. TRANSLATORS: def ExUnit.Assertions.assert_raise(exception, message, function)
-#: lib/ex_unit/assertions.ex:424 
-msgid ""
-"Asserts the `exception` is raised during `function` execution with\n"
-"the expected `message`, which can be a `Regex` or an exact `String`.\n"
-"Returns the rescued exception, fails otherwise.\n"
-"\n"
-"## Examples\n"
-"\n"
-"    assert_raise ArithmeticError, \"bad argument in arithmetic expression\", fn ->\n"
-"      1 + \"test\"\n"
-"    end\n"
-"\n"
-"    assert_raise RuntimeError, ~r/^Today's lucky number is 0.+!$/, fn ->\n"
-"      raise \"Today's lucky number is 0.4379087006197395!\"\n"
-"    end\n"
-msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.catch_throw(expression)
 #: lib/ex_unit/assertions.ex:507 
 msgid ""
@@ -198,17 +198,6 @@ msgid ""
 "## Examples\n"
 "\n"
 "    assert catch_throw(throw 1) == 1\n"
-"\n"
-msgstr ""
-#. TRANSLATORS: defmacro ExUnit.Assertions.catch_exit(expression)
-#: lib/ex_unit/assertions.ex:520 
-msgid ""
-"Asserts `expression` will exit.\n"
-"Returns the exit status/message or fails otherwise.\n"
-"\n"
-"## Examples\n"
-"\n"
-"    assert catch_exit(exit 1) == 1\n"
 "\n"
 msgstr ""
 #. TRANSLATORS: defmacro ExUnit.Assertions.refute_received(not_expected, message \\ nil)
@@ -284,13 +273,24 @@ msgid ""
 "    refute age < 0\n"
 "\n"
 msgstr ""
-#. TRANSLATORS: Elixir.ExUnit.AssertionError Summary
-#: lib/ex_unit/assertions.ex:2 
+#. TRANSLATORS: defmacro ExUnit.Assertions.catch_exit(expression)
+#: lib/ex_unit/assertions.ex:520 
 msgid ""
-"Raised to signal an assertion error.\n"
+"Asserts `expression` will exit.\n"
+"Returns the exit status/message or fails otherwise.\n"
+"\n"
+"## Examples\n"
+"\n"
+"    assert catch_exit(exit 1) == 1\n"
+"\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.MultiError Summary
 #: lib/ex_unit/assertions.ex:22 
 msgid ""
 "Raised to signal multiple errors happened in a test case.\n"
+msgstr ""
+#. TRANSLATORS: Elixir.ExUnit.AssertionError Summary
+#: lib/ex_unit/assertions.ex:2 
+msgid ""
+"Raised to signal an assertion error.\n"
 msgstr ""
