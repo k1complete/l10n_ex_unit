@@ -42,10 +42,11 @@ defmodule L10nExUnit.Mixfile do
            end
     version_path = Path.join(source_dir, "VERSION")
 #    IO.inspect [version_path: version_path, sref: sref]
-    version = nil
-    if (File.exists?(version_path)) do
-      {:ok, version} = File.read(version_path)
-    end
+    {:ok, version} = if File.exists?(version_path) do
+                       File.read(version_path)
+                     else
+                       {:ok, nil}
+                     end
     [
      project: "ExUnit",
      app: "ex_unit",
