@@ -3,24 +3,6 @@
 msgid ""
 "Defines a callback to be run before all tests in a case.\n"
 msgstr ""
-#. TRANSLATORS: defmacro ExUnit.Callbacks.setup(var \\ quote() do;  _;end, block)
-#: lib/ex_unit/callbacks.ex:105 
-msgid ""
-"Defines a callback to be run before each test in a case.\n"
-msgstr ""
-#. TRANSLATORS: def ExUnit.Callbacks.on_exit(ref \\ make_ref, callback)
-#: lib/ex_unit/callbacks.ex:127 
-msgid ""
-"Defines a callback that runs on the test (or test case) exit.\n"
-"\n"
-"An `on_exit` callback is a function that receives no arguments and\n"
-"runs in a separate process than the caller.\n"
-"\n"
-"`on_exit/2` is usually called from `setup` and `setup_all` callbacks,\n"
-"often to undo the action performed during `setup`. However, `on_exit`\n"
-"may also be called dynamically, where a reference can be used to\n"
-"guarantee the callback will be invoked only once.\n"
-msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.Callbacks Summary
 #: lib/ex_unit/callbacks.ex:2 
 msgid ""
@@ -87,7 +69,7 @@ msgid ""
 "          IO.puts \"This is invoked once the test is done\"\n"
 "        end\n"
 "\n"
-"        # Returns extra metadata, it must be a dict\n"
+"        # Returns extra metadata to be merged into context\n"
 "        {:ok, hello: \"world\"}\n"
 "      end\n"
 "\n"
@@ -107,4 +89,22 @@ msgid ""
 "      end\n"
 "    end\n"
 "\n"
+msgstr ""
+#. TRANSLATORS: defmacro ExUnit.Callbacks.setup(var \\ quote() do;  _;end, block)
+#: lib/ex_unit/callbacks.ex:105 
+msgid ""
+"Defines a callback to be run before each test in a case.\n"
+msgstr ""
+#. TRANSLATORS: def ExUnit.Callbacks.on_exit(ref \\ make_ref, callback)
+#: lib/ex_unit/callbacks.ex:127 
+msgid ""
+"Defines a callback that runs on the test (or test case) exit.\n"
+"\n"
+"An `on_exit` callback is a function that receives no arguments and\n"
+"runs in a separate process than the caller.\n"
+"\n"
+"`on_exit/2` is usually called from `setup` and `setup_all` callbacks,\n"
+"often to undo the action performed during `setup`. However, `on_exit`\n"
+"may also be called dynamically, where a reference can be used to\n"
+"guarantee the callback will be invoked only once.\n"
 msgstr ""

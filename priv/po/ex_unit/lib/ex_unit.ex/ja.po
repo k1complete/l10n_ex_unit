@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: l 10n_ex_unit\n"
-"PO-Revision-Date: 2016-02-24 22:53+0900\n"
+"PO-Revision-Date: 2016-04-03 10:55+0900\n"
 "Last-Translator: 小田 照敬 <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -11,9 +11,41 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: def ExUnit.configuration()
-#: lib/ex_unit.ex:218
+#: lib/ex_unit.ex:219
 msgid "Returns ExUnit configuration.\n"
 msgstr "ExUnitコンフィグレーションを返します。\n"
+
+#. TRANSLATORS: @type state
+#: lib/ex_unit.ex:60
+msgid "The error state returned by ExUnit.Test and ExUnit.TestCase"
+msgstr "ExUnit.TestとExUnit.TestCaseにより返されるエラーステートです"
+
+#. TRANSLATORS: Elixir.ExUnit.Test Summary
+#: lib/ex_unit.ex:65
+msgid ""
+"A struct that keeps information about the test.\n"
+"\n"
+"It is received by formatters and contains the following fields:\n"
+"\n"
+"  * `:name`  - the test name\n"
+"  * `:case`  - the test case\n"
+"  * `:state` - the test error state (see ExUnit.state)\n"
+"  * `:time`  - the time to run the test\n"
+"  * `:tags`  - the test tags\n"
+"  * `:logs`  - the captured logs\n"
+"\n"
+msgstr ""
+"テストについての情報を保持する構造体です。\n"
+"\n"
+"それはフォーマッタにより受信され、以下のフィールドを含みます:\n"
+"\n"
+"  * `:name`  - テスト名\n"
+"  * `:case`  - テストケース\n"
+"  * `:state` - テストステート (see ExUnit.state)\n"
+"  * `:time`  - テスト実行時刻\n"
+"  * `:tags`  - テストのタグ\n"
+"  * `:logs`  - キャプチャされたログ\n"
+"\n"
 
 #. TRANSLATORS: Elixir.ExUnit Summary
 #: lib/ex_unit.ex:2
@@ -32,7 +64,8 @@ msgid ""
 "    # 2) Create a new test module (test case) and use \"ExUnit.Case\".\n"
 "    defmodule AssertionTest do\n"
 "      # 3) Notice we pass \"async: true\", this runs the test case\n"
-"      #    concurrently with other test cases\n"
+"      #    concurrently with other test cases. The individual tests\n"
+"      #    within each test case are still run serially.\n"
 "      use ExUnit.Case, async: true\n"
 "\n"
 "      # 4) Use the \"test\" macro instead of \"def\" for clarity.\n"
@@ -74,7 +107,7 @@ msgid ""
 "It is not necessary to `require` the `test_helper.exs` file in your test\n"
 "files. See `Mix.Tasks.Test` for more information.\n"
 msgstr ""
-"基本的なElixirのためのユニットテストフレームワークです。\n"
+"Elixirのためのユニットテストフレームワークです。\n"
 "\n"
 "## Example\n"
 "\n"
@@ -131,40 +164,8 @@ msgstr ""
 "testファイルに`test_helper.exs`の`require`は必要ありません。\n"
 "詳細は`Mix.Tasks.Test`を参照してください。\n"
 
-#. TRANSLATORS: @type state
-#: lib/ex_unit.ex:59
-msgid "The error state returned by ExUnit.Test and ExUnit.TestCase"
-msgstr "ExUnit.TestとExUnit.TestCaseにより返されるエラーステートです"
-
-#. TRANSLATORS: Elixir.ExUnit.Test Summary
-#: lib/ex_unit.ex:64
-msgid ""
-"A struct that keeps information about the test.\n"
-"\n"
-"It is received by formatters and contains the following fields:\n"
-"\n"
-"  * `:name`  - the test name\n"
-"  * `:case`  - the test case\n"
-"  * `:state` - the test error state (see ExUnit.state)\n"
-"  * `:time`  - the time to run the test\n"
-"  * `:tags`  - the test tags\n"
-"  * `:logs`  - the captured logs\n"
-"\n"
-msgstr ""
-"テストについての情報を保持する構造体です。\n"
-"\n"
-"それはフォーマッタにより受信され、以下のフィールドを含みます:\n"
-"\n"
-"  * `:name`  - テスト名\n"
-"  * `:case`  - テストケース\n"
-"  * `:state` - テストステート (see ExUnit.state)\n"
-"  * `:time`  - テスト実行時刻\n"
-"  * `:tags`  - テストのタグ\n"
-"  * `:logs`  - キャプチャされたログ\n"
-"\n"
-
 #. TRANSLATORS: def ExUnit.run()
-#: lib/ex_unit.ex:225
+#: lib/ex_unit.ex:226
 msgid ""
 "API used to run the tests. It is invoked automatically\n"
 "if ExUnit is started via `ExUnit.start/1`.\n"
@@ -179,7 +180,7 @@ msgstr ""
 "含むマップを返します。\n"
 
 #. TRANSLATORS: def ExUnit.start(options \\ [])
-#: lib/ex_unit.ex:140
+#: lib/ex_unit.ex:141
 msgid ""
 "Starts ExUnit and automatically runs tests right before the\n"
 "VM terminates. It accepts a set of options to configure `ExUnit`\n"
@@ -195,7 +196,7 @@ msgstr ""
 "してください。\n"
 
 #. TRANSLATORS: def ExUnit.configure(options)
-#: lib/ex_unit.ex:167
+#: lib/ex_unit.ex:168
 msgid ""
 "Configures ExUnit.\n"
 "\n"
@@ -254,10 +255,12 @@ msgstr ""
 "\n"
 "ExUnitは以下のオプションをサポートします:\n"
 "\n"
-"  * `:assert_receive_timeout` - `assert_receive`で使われるタイムアウトです。\n"
+"  * `:assert_receive_timeout` - `assert_receive`で使われるタイムアウトで"
+"す。\n"
 "    デフォルトは100msです\n"
 "\n"
-"  * `:capture_log` - ExUnitがテストを失敗したときにプリントやログメッセージを\n"
+"  * `:capture_log` - ExUnitがテストを失敗したときにプリントやログメッセージ"
+"を\n"
 "    デフォルトで捕捉するかどうかです。テスト毎に`@tag capture_log: false`で\n"
 "    上書きできます。デフォルトは`false`です。\n"
 "\n"
@@ -295,7 +298,7 @@ msgstr ""
 "  * `:timeout` - testの為のタイムアウトをセットします(デフォルト 60_000ms)\n"
 
 #. TRANSLATORS: Elixir.ExUnit.TestCase Summary
-#: lib/ex_unit.ex:88
+#: lib/ex_unit.ex:89
 msgid ""
 "A struct that keeps information about the test case.\n"
 "\n"

@@ -1,7 +1,27 @@
 #. TRANSLATORS: def ExUnit.configuration()
-#: lib/ex_unit.ex:218 
+#: lib/ex_unit.ex:219 
 msgid ""
 "Returns ExUnit configuration.\n"
+msgstr ""
+#. TRANSLATORS: @type state
+#: lib/ex_unit.ex:60 
+msgid ""
+"The error state returned by ExUnit.Test and ExUnit.TestCase"
+msgstr ""
+#. TRANSLATORS: Elixir.ExUnit.Test Summary
+#: lib/ex_unit.ex:65 
+msgid ""
+"A struct that keeps information about the test.\n"
+"\n"
+"It is received by formatters and contains the following fields:\n"
+"\n"
+"  * `:name`  - the test name\n"
+"  * `:case`  - the test case\n"
+"  * `:state` - the test error state (see ExUnit.state)\n"
+"  * `:time`  - the time to run the test\n"
+"  * `:tags`  - the test tags\n"
+"  * `:logs`  - the captured logs\n"
+"\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit Summary
 #: lib/ex_unit.ex:2 
@@ -20,7 +40,8 @@ msgid ""
 "    # 2) Create a new test module (test case) and use \"ExUnit.Case\".\n"
 "    defmodule AssertionTest do\n"
 "      # 3) Notice we pass \"async: true\", this runs the test case\n"
-"      #    concurrently with other test cases\n"
+"      #    concurrently with other test cases. The individual tests\n"
+"      #    within each test case are still run serially.\n"
 "      use ExUnit.Case, async: true\n"
 "\n"
 "      # 4) Use the \"test\" macro instead of \"def\" for clarity.\n"
@@ -61,28 +82,8 @@ msgid ""
 "It is not necessary to `require` the `test_helper.exs` file in your test\n"
 "files. See `Mix.Tasks.Test` for more information.\n"
 msgstr ""
-#. TRANSLATORS: @type state
-#: lib/ex_unit.ex:59 
-msgid ""
-"The error state returned by ExUnit.Test and ExUnit.TestCase"
-msgstr ""
-#. TRANSLATORS: Elixir.ExUnit.Test Summary
-#: lib/ex_unit.ex:64 
-msgid ""
-"A struct that keeps information about the test.\n"
-"\n"
-"It is received by formatters and contains the following fields:\n"
-"\n"
-"  * `:name`  - the test name\n"
-"  * `:case`  - the test case\n"
-"  * `:state` - the test error state (see ExUnit.state)\n"
-"  * `:time`  - the time to run the test\n"
-"  * `:tags`  - the test tags\n"
-"  * `:logs`  - the captured logs\n"
-"\n"
-msgstr ""
 #. TRANSLATORS: def ExUnit.run()
-#: lib/ex_unit.ex:225 
+#: lib/ex_unit.ex:226 
 msgid ""
 "API used to run the tests. It is invoked automatically\n"
 "if ExUnit is started via `ExUnit.start/1`.\n"
@@ -91,7 +92,7 @@ msgid ""
 "of failures and the number of skipped tests.\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.start(options \\ [])
-#: lib/ex_unit.ex:140 
+#: lib/ex_unit.ex:141 
 msgid ""
 "Starts ExUnit and automatically runs tests right before the\n"
 "VM terminates. It accepts a set of options to configure `ExUnit`\n"
@@ -100,7 +101,7 @@ msgid ""
 "If you want to run tests manually, you can set `:autorun` to `false`.\n"
 msgstr ""
 #. TRANSLATORS: def ExUnit.configure(options)
-#: lib/ex_unit.ex:167 
+#: lib/ex_unit.ex:168 
 msgid ""
 "Configures ExUnit.\n"
 "\n"
@@ -147,7 +148,7 @@ msgid ""
 "  * `:timeout` - set the timeout for the tests (default 60_000ms)\n"
 msgstr ""
 #. TRANSLATORS: Elixir.ExUnit.TestCase Summary
-#: lib/ex_unit.ex:88 
+#: lib/ex_unit.ex:89 
 msgid ""
 "A struct that keeps information about the test case.\n"
 "\n"
